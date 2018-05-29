@@ -27,4 +27,4 @@ Descripción de las funciones de los pines de **entrada/salida**.
 
 
 # Comportamiento de la memoria de datos
- La memoria de datos....
+ La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado.

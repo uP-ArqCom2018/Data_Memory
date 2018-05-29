@@ -23,8 +23,8 @@ Descripción de las funciones de los pines de **entrada/salida**.
 |CLK_i                 | IN       | Reloj de sincronización |
 
 # Datos genéricos
-- Descripción de valores genéricos para la descripción del bloque.
+. Descripción de valores genéricos para la descripción del bloque.
 
 
 # Comportamiento de la memoria de datos
-- La memoria de datos....
+. La memoria de datos....

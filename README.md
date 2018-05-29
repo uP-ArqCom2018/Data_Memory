@@ -8,7 +8,7 @@
 - Santamaria Araceli (@aracelisantamaria)
 
 Memoria de Datos
-Dentro de la carpeta src "Memoria_de_Datos.vhd" describe el comportamiento la memoria de datos, y dentro de la carpeta tb_src se encuentra "tb_mem_dato.vhd", el cual describe el Test Bench utilizado para comprobar el funcionamiento de la memoria de datos.La memoria de datos está descripta de manera genérica, aunque por defecto se definió la posibilidad de direccionar con 10 bits (los 10 menos significativos de los 64 bits de entrada) y una cantidad de 1024 palabras.
+Dentro de la carpeta src "Memoria_de_Datos.vhd" describe el comportamiento de la memoria de datos, y dentro de la carpeta tb_src se encuentra "tb_mem_dato.vhd", el cual describe el Test Bench utilizado para comprobar el funcionamiento de la memoria de datos (para algunos valores). La memoria de datos está descripta de manera genérica, aunque por defecto se definió la posibilidad de direccionar con 10 bits (los 10 menos significativos de los 64 bits de entrada) y asi crear una cantidad de 1024 palabras.
 
 # Pines de entrada/salida
 Descripción de las funciones de los pines de **entrada/salida**.

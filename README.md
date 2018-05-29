@@ -3,7 +3,7 @@
 
 # Materia: Arquitectura de Computadoras
 ## Autores del bloque:
-- Chavez Mauro (@vhavezmauro) 
+- Chavez Mauro (@chavezmauro) 
 - Sanchez Lourdes (@lourdessanchez)
 - Santamaria Araceli (@aracelisantamaria)
 
@@ -14,7 +14,7 @@ Dentro de la carpeta src "Memoria_de_Datos.vhd" describe el comportamiento la me
 Descripción de las funciones de los pines de **entrada/salida**.
 
 | Pines                | I/O      |   Función                                                |
-| :---                 |  :----:  |          ---:                                            |
+|     :----:           |  :----:  |          :----:                                            |
 |ADDR_i [63 : 0]       | IN       | Dirección de escritura/lectura en memoria de datos de la dirección ADDR_i_0   |
 |DATA_i [63 : 0]       | IN       | Dato de entrada  que se almacena en memoria de datos |
 |DATA_o [63 : 0]       | OUT      | Dato ubicado en la dirección de memoria determinado ADDR    |
@@ -22,9 +22,9 @@ Descripción de las funciones de los pines de **entrada/salida**.
 |MemRead               | IN       | Señal de lectura de la dirección ADDR de la memoria del dato   |
 |CLK_i                 | IN       | Reloj de sincronización |
 
-#Datos genéricos
-Descripción de valores genéricos para la descripción del bloque.
+# Datos genéricos
+- Descripción de valores genéricos para la descripción del bloque.
 
 
-#Comportamiento de la memoria de datos
-La memoria de datos....
+# Comportamiento de la memoria de datos
+- La memoria de datos....

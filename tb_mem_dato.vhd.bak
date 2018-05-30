@@ -1,0 +1,119 @@
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY tb_mem_dato IS
+END tb_mem_dato;
+
+ARCHITECTURE testbench OF tb_mem_dato IS
+
+
+COMPONENT presentacion
+
+     generic (size : integer :=10);
+	  
+     port (
+         CLK_i: 	in std_logic;
+         ADDR_i: 	in std_logic_vector(63 downto 0);
+         DATA_i:  in std_logic_vector (63 downto 0);
+         DATA_o: 	out std_logic_vector (63 downto 0);
+         MemWrite:in std_logic;
+			MemRead: in std_logic);
+			
+
+END COMPONENT;
+
+
+      signal CLK_i:  	std_logic;
+      signal ADDR_i:  	std_logic_vector(63 downto 0);
+      signal DATA_i:  	std_logic_vector (63 downto 0);
+      signal DATA_o:  	std_logic_vector (63 downto 0);
+      signal MemWrite:  std_logic;
+    	signal MemRead:  	std_logic
+
+BEGIN
+-- Instantiate the Unit Under Test (UUT)
+
+uut: presentacion PORT MAP (  CLK_i		=> CLK_i	 ,
+										ADDR_i	=> ADDR_i ,
+										DATA_i	=> DATA_i ,
+										DATA_o	=>	DATA_o ,
+										MemWrite	=>	MemWrite,
+										MemRead	=>	MemRead);
+										
+-- Stimulus process
+
+stim_proc: process
+
+begin
+
+CLK_i <= '0';  -- ciclo de escritura
+
+ADDR_i <= "0000000000000000000000000000000000000000000000000000000000011111";
+DATA_i <= "0000000000000000000000000000000000000000000000000000000000011111";
+MemWrite <= '1';
+MemRead <= '0';
+
+wait for 10 ns;
+
+CLK_i <= '1';
+
+wait for 10 ns;
+
+ADDR_i <= "0000000000000000000000000000000000000000000000000000000011011111";
+DATA_i <= "0000000000000000000000000000000000000000000000000000000011011111";
+MemWrite <= '1';
+MemRead <= '0';
+
+
+CLK_i <= '0';
+
+wait for 10 ns;
+
+CLK_i <= '1';
+
+wait for 10 ns;
+
+CLK_i <= '0';
+
+ADDR_i <= "0000000000000000000000000000000000000000000000000000000000000000";
+DATA_i <= "0000000000000000000000000000000000000000000000000000001111111111";
+MemWrite <= '1';
+MemRead <= '0';
+
+wait for 10 ns;   -- ciclo de lectura
+
+CLK_i <= '0';
+
+ADDR_i <= "0000000000000000000000000000000000000000000000000000000000011111";
+MemWrite <= '0';
+MemRead <= '1';
+
+wait for 10 ns;
+
+CLK_i <= '1';
+
+wait for 10 ns;
+
+ADDR_i <= "0000000000000000000000000000000000000000000000000000000011011111";
+MemWrite <= '0';
+MemRead <= '1';
+
+
+CLK_i <= '0';
+
+wait for 10 ns;
+
+CLK_i <= '1';
+
+wait for 10 ns;
+
+CLK_i <= '0';
+
+ADDR_i <= "0000000000000000000000000000000000000000000000000000000000000000";
+MemWrite <= '0';
+MemRead <= '1';
+
+	wait;
+	end process;
+END;

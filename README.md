@@ -22,9 +22,5 @@ Descripción de las funciones de los pines de **entrada/salida**.
 |MemRead               | IN       | Señal de lectura de la dirección ADDR de la memoria del dato Habilitado=1, Deshabilitado=0   |
 |CLK_i                 | IN       | Reloj de sincronización |
 
-# Datos genéricos
- Descripción de valores genéricos para la descripción del bloque.
-
-
 # Comportamiento de la memoria de datos
  La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado (flanco ascendente). Hay que tener en cuenta que en el caso de que los dos controles (lectura y escritura) esten en alto, el que tiene prioridad es el control de lectura.

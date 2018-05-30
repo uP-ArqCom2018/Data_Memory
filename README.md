@@ -18,8 +18,8 @@ Descripción de las funciones de los pines de **entrada/salida**.
 |ADDR_i [63 : 0]       | IN       | Dirección de escritura/lectura en memoria de datos de la dirección ADDR_i_0   |
 |DATA_i [63 : 0]       | IN       | Dato de entrada  que se almacena en memoria de datos |
 |DATA_o [63 : 0]       | OUT      | Dato ubicado en la dirección de memoria determinado ADDR    |
-|MemWrite              | IN       | Señal de escritura en dirección ADDR de la memoria del dato   |
-|MemRead               | IN       | Señal de lectura de la dirección ADDR de la memoria del dato   |
+|MemWrite              | IN       | Señal de escritura en dirección ADDR de la memoria del dato. Habilitado=1, Deshabilitado=0   |
+|MemRead               | IN       | Señal de lectura de la dirección ADDR de la memoria del dato Habilitado=1, Deshabilitado=0   |
 |CLK_i                 | IN       | Reloj de sincronización |
 
 # Datos genéricos
@@ -27,4 +27,4 @@ Descripción de las funciones de los pines de **entrada/salida**.
 
 
 # Comportamiento de la memoria de datos
- La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado.
+ La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado (flanco ascendente). Hay que tener en cuenta que en el caso de que los dos controles (lectura y escritura) esten en alto, el que tiene prioridad es el control de lectura.

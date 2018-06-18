@@ -7,11 +7,13 @@
 - Sanchez Lourdes (@lourdessanchez)
 - Santamaria Araceli (@aracelisantamaria)
 
-Memoria de Datos
+# Memoria de Datos
 Dentro de la carpeta src "Memoria_de_Datos.vhd" describe el comportamiento de la memoria de datos, y dentro de la carpeta tb_src se encuentra "tb_mem_dato.vhd", el cual describe el Test Bench utilizado para comprobar el funcionamiento de la memoria de datos (para algunos valores). La memoria de datos está descripta de manera genérica, aunque por defecto se definió la posibilidad de direccionar con 10 bits (los 10 menos significativos de los 64 bits de entrada) y asi crear una cantidad de 1024 palabras.
 
-# Pines de entrada/salida
-Descripción de las funciones de los pines de **entrada/salida**.
+La memoria de datos se implemento a partir de dos componentes, uno correspondiente a la Memoria de Datos en sí y el restante al Multiplexor que multiplexa entre la salida de la ALU y la de la memoria de datos. 
+
+# Pines de entrada/salida del componente de la Memoria de Datos.
+Descripción de las funciones de los pines de **entrada/salida** del componente de la Memoria de Datos.
 
 | Pines                | I/O      |   Función                                                |
 |     :----:           |  :----:  |          :----:                                            |
@@ -21,20 +23,26 @@ Descripción de las funciones de los pines de **entrada/salida**.
 |MemWrite              | IN       | Señal de escritura en dirección ADDR de la memoria del dato. Habilitado=1, Deshabilitado=0   |
 |MemRead               | IN       | Señal de lectura de la dirección ADDR de la memoria del dato Habilitado=1, Deshabilitado=0   |
 |CLK_i                 | IN       | Reloj de sincronización ||CLK_i                 | IN       | Reloj de sincronización |
+
+# Pines de entrada/salida componente del Multiplexor.
+Descripción de las funciones de los pines de **entrada/salida** del componente del Multiplexor.
+| Pines                | I/O      |   Función                                                |
+|     :----:           |  :----:  |          :----:                                            |
 |W_c_i                 | OUT      | Salida del multiplexor 2 que luego se dirige al banco de registros |
 |MemtoReg              | IN       | Bit de control que selecciona el dato de salida correspondiente a la instrucción |
 |MUX2_1_i              | IN       | Dato que se multiplexa dependiendo del valor del bit de control |
 |MUX2_2_i              | IN       | Dato que se multiplexa dependiendo del valor del bit de control |
 
 
-# Descripcion del funcionamiento del multiplexor 
+## Descripcion del funcionamiento del multiplexor 
 Descripción de las funciones de los pines de **entrada/salida** del multiplexor.
 
 | Pines                |    Función                                                |
 |     :----:           |         :----:                                            |
-|MemtoReg=1            | A la salida del multiplexor se tiene el valor que se conecta directamente a la salida de la memoria de datos(Mux2_1_i) |
-|MemtoReg=1            | A la salida del multiplexor se tiene el valor que se conecta directamente a la salida de la ALU(Mux2_2_i) |
+|MemtoReg=1            | A la salida del multiplexor se tiene la salida de la memoria de datos(Mux2_1_i) |
+|MemtoReg=0            | A la salida del multiplexor se tiene la salida de la ALU(Mux2_2_i) |
 
-# Comportamiento de la memoria de datos
- La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado (flanco ascendente). Hay que tener en cuenta que en el caso de que los dos controles (lectura y escritura) esten en alto, el que tiene prioridad es el control de lectura, incluso esta última se realiza de manera concurrente.
- Además hay un segundo control, que a partir de este se determina si el dato a almacenar en el bloque de registros es el proveniente de la ALU o aquel que se obtuvo de la memoria de datos.
+# Comportamiento de la memoria de datos.
+La Memoria de Datos es un elemento de estado con entradas para la dirección, los datos de escritura y  una única salida para el resultado de lectura.  Hay controles de lectura y escritura separados, aunque solo la escritura se puede afirmar en un flanco ascendente del reloj. Cuando la entrada de control de lectura (MemtoRead) o la entrada de direccionamiento se modifican se produce la lectura de la memoria de datos. 
+**Importante:** Hay que tener en cuenta que cuando no se quiere realizar ninguna acción sobre la memoria de datos, los controles, tanto el de escritura como el de lectura deben ir en cero. 
+

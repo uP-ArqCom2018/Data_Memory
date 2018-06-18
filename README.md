@@ -26,6 +26,7 @@ Descripción de las funciones de los pines de **entrada/salida** del componente 
 
 # Pines de entrada/salida componente del Multiplexor.
 Descripción de las funciones de los pines de **entrada/salida** del componente del Multiplexor.
+
 | Pines                | I/O      |   Función                                                |
 |     :----:           |  :----:  |          :----:                                            |
 |W_c_i                 | OUT      | Salida del multiplexor 2 que luego se dirige al banco de registros |

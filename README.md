@@ -44,5 +44,6 @@ Descripción de las funciones de los pines de **entrada/salida** del multiplexor
 
 # Comportamiento de la memoria de datos.
 La Memoria de Datos es un elemento de estado con entradas para la dirección, los datos de escritura y  una única salida para el resultado de lectura.  Hay controles de lectura y escritura separados, aunque solo la escritura se puede afirmar en un flanco ascendente del reloj. Cuando la entrada de control de lectura (MemtoRead) o la entrada de direccionamiento se modifican se produce la lectura de la memoria de datos. 
+
 **Importante:** Hay que tener en cuenta que cuando no se quiere realizar ninguna acción sobre la memoria de datos, los controles, tanto el de escritura como el de lectura deben ir en cero. 
 

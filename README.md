@@ -1,4 +1,4 @@
-# Data_Memory
+# Data Memory & Multiplexor
 # Bloque de la memoria de datos
 
 # Materia: Arquitectura de Computadoras
@@ -10,7 +10,10 @@
 # Memoria de Datos
 Dentro de la carpeta src "Memoria_de_Datos.vhd" describe el comportamiento de la memoria de datos, y dentro de la carpeta tb_src se encuentra "tb_mem_dato.vhd", el cual describe el Test Bench utilizado para comprobar el funcionamiento de la memoria de datos (para algunos valores). La memoria de datos está descripta de manera genérica, aunque por defecto se definió la posibilidad de direccionar con 10 bits (los 10 menos significativos de los 64 bits de entrada) y asi crear una cantidad de 1024 palabras.
 
-La memoria de datos se implemento a partir de dos componentes, uno correspondiente a la Memoria de Datos en sí y el restante al Multiplexor que multiplexa entre la salida de la ALU y la de la memoria de datos. 
+La memoria de datos se implemento a partir de dos componentes, uno correspondiente a la Memoria de Datos en sí y el restante al Multiplexor que multiplexa entre la salida de la ALU y la de la memoria de datos. En la Figura siguiente se muestra el diagrama de las conexiones entre estos componentes, respresentando las entradas y salidas correspondientes. 
+
+![Memoria de datos & Mux](https://github.com/uP-ArqCom2018/Data_Memory/blob/master/images/DataMemory_Mux.PNG)
+
 
 # Pines de entrada/salida del componente de la Memoria de Datos.
 Descripción de las funciones de los pines de **entrada/salida** del componente de la Memoria de Datos.

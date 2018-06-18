@@ -20,7 +20,21 @@ Descripción de las funciones de los pines de **entrada/salida**.
 |DATA_o [63 : 0]       | OUT      | Dato ubicado en la dirección de memoria determinado ADDR    |
 |MemWrite              | IN       | Señal de escritura en dirección ADDR de la memoria del dato. Habilitado=1, Deshabilitado=0   |
 |MemRead               | IN       | Señal de lectura de la dirección ADDR de la memoria del dato Habilitado=1, Deshabilitado=0   |
-|CLK_i                 | IN       | Reloj de sincronización |
+|CLK_i                 | IN       | Reloj de sincronización ||CLK_i                 | IN       | Reloj de sincronización |
+|W_c_i                 | OUT      | Salida del multiplexor 2 que luego se dirige al banco de registros |
+|MemtoReg              | IN       | Bit de control que selecciona el dato de salida correspondiente a la instrucción |
+|MUX2_1_i              | IN       | Dato que se multiplexa dependiendo del valor del bit de control |
+|MUX2_2_i              | IN       | Dato que se multiplexa dependiendo del valor del bit de control |
+
+
+# Descripcion del funcionamiento del multiplexor 
+Descripción de las funciones de los pines de **entrada/salida** del multiplexor.
+
+| Pines                |    Función                                                |
+|     :----:           |         :----:                                            |
+|MemtoReg=1            | A la salida del multiplexor se tiene el valor que se conecta directamente a la salida de la memoria de datos(Mux2_1_i) |
+|MemtoReg=1            | A la salida del multiplexor se tiene el valor que se conecta directamente a la salida de la ALU(Mux2_2_i) |
 
 # Comportamiento de la memoria de datos
- La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado (flanco ascendente). Hay que tener en cuenta que en el caso de que los dos controles (lectura y escritura) esten en alto, el que tiene prioridad es el control de lectura.
+ La memoria de datos es un elemento de estado con entradas para la dirección y los datos de escritura, y una única salida para el resultado de lectura. Hay controles de lectura y escritura separados, aunque solo uno de estos se puede afirmar en un reloj dado (flanco ascendente). Hay que tener en cuenta que en el caso de que los dos controles (lectura y escritura) esten en alto, el que tiene prioridad es el control de lectura, incluso esta última se realiza de manera concurrente.
+ Además hay un segundo control, que a partir de este se determina si el dato a almacenar en el bloque de registros es el proveniente de la ALU o aquel que se obtuvo de la memoria de datos.

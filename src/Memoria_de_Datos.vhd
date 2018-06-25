@@ -28,10 +28,10 @@
  architecture MyHDL of Memoria_de_Datos is
  
  
- type t_array_mem is array(0 to 2**size-1) of std_logic_vector (63 downto 0);  -- se crea una matriz de 2^10 registro y 64 bits de palabra
- signal mem: t_array_mem;                                           -- cada registro.
+ type t_array_mem is array(2**size-1 downto 0) of std_logic_vector (63 downto 0);  -- se crea una matriz de 2^10 registro y 64 bits de palabra
+ signal memoria: t_array_mem:=(others=>x"0000000000000000");                                           -- cada registro.
  signal ADDR:  	std_logic_vector(size-1 downto 0);
- signal aux:   	std_logic_vector(63 downto 0);
+ signal aux:   	std_logic_vector(63 downto 0):=x"0000000000000000";
   
  begin
  
@@ -41,8 +41,8 @@
   
  with MemRead select       
 
-			aux<= 	mem(to_integer(unsigned(ADDR))) when '1', -- la lectura se hace de forma concurrente.
-														    aux when others ;
+			aux<= 	memoria(to_integer(unsigned(ADDR))) when '1', -- la lectura se hace de forma concurrente.
+														    aux when others;
    	  
 DATA_o <= aux;
  
@@ -54,7 +54,7 @@ DATA_o <= aux;
 	  
          if (MemWrite = '1') then    
 			
-             mem(to_integer(unsigned(ADDR))) <= DATA_i;  -- Escritura en memoria 
+             memoria(to_integer(unsigned(ADDR))) <= DATA_i;  -- Escritura en memoria 
 				 
          end if;
 			
